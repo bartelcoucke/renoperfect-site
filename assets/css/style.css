@@ -669,6 +669,11 @@ p {
   color: var(--cta);
 }
 
+.nummer-label {
+  color: #7f8c8d;
+  font-size: 0.85rem;
+}
+
 .spoedbox {
   background: var(--cta);
   color: var(--wit);
