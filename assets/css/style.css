@@ -4,7 +4,8 @@
   --cta: #e67e22;
   --cta-hover: #d35400;
   --secundair-hover: #34495e;
-  --accent: #3498db;
+  --accent: #ED5B23;
+  --link: #BE4219;
   --licht: #f4f4f9;
   --vocht: #fef5e7;
   --renovatie: #eaf2f8;
@@ -48,7 +49,7 @@ img {
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
 }
 
 h1,
