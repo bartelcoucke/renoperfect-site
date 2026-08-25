@@ -15,6 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="icon" href="assets/img/favicon.png" sizes="32x32">
+  <link rel="icon" href="assets/img/renoperfect-icoon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta property="og:image" content="https://www.renoperfect.be/assets/img/renoperfect-logo.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="application/ld+json">
   {
@@ -24,6 +28,8 @@
     "url": "https://www.renoperfect.be/",
     "telephone": ["+32499523325", "+3256323971"],
     "email": "bartelcoucke@renoperfect.be",
+    "logo": "https://www.renoperfect.be/assets/img/renoperfect-logo.png",
+    "image": "https://www.renoperfect.be/assets/img/renoperfect-logo.png",
     "foundingDate": "2010",
     "numberOfEmployees": "20",
     "address": {
@@ -67,7 +73,9 @@
 <body>
   <header class="header">
     <div class="wrap header-inner">
-      <a class="logo" href="#home">Renoperfect</a>
+      <a class="logo" href="#home" aria-label="Renoperfect — naar home">
+        <img src="assets/img/renoperfect-logo.png" alt="Renoperfect" width="205" height="60">
+      </a>
       <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
       <nav class="nav" aria-label="Hoofdmenu">
         <a href="#home">Home</a>
@@ -438,6 +446,7 @@
   </section>
 
   <footer class="footer">
+    <img class="footer-logo" src="assets/img/renoperfect-logo-wit.png" alt="Renoperfect" width="205" height="60">
     <p>© <span class="js-jaar">2026</span> Renoperfect BV — Walbrugge 36, 8573 Anzegem · Oostrozebeeksestraat 70A, 8710 Ooigem — Ondernemingsnummer: BE0830.787.776</p>
     <p><a href="tel:+32499523325">+32 499 523 325</a> — <a href="mailto:bartelcoucke@renoperfect.be">bartelcoucke@renoperfect.be</a></p>
     <div class="social" aria-label="Sociale media — URL's volgen later">
