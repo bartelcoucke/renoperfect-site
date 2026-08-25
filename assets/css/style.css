@@ -140,10 +140,23 @@ p {
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 22px;
-  color: var(--primair);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  flex: 0 0 auto;
+}
+
+.logo img {
+  display: block;
+  height: 60px;
+  width: auto;
+}
+
+.footer-logo {
+  display: block;
+  height: 60px;
+  width: auto;
+  margin: 0 auto 24px;
 }
 
 .nav {
@@ -822,6 +835,14 @@ p {
 
   .hero .lead-hero {
     font-size: 17px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+
+  .footer-logo {
+    height: 44px;
   }
 
   .menu-toggle {
