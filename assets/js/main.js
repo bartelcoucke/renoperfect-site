@@ -20,6 +20,11 @@
 
   var form = document.getElementById("contactformulier");
   if (form) {
+    var succes = document.getElementById("form-succes");
+    var fout = document.getElementById("form-fout");
+    var knop = form.querySelector("button[type=submit]");
+    var knopTekst = knop ? knop.textContent : "";
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var privacy = form.querySelector("#privacy");
@@ -27,27 +32,30 @@
         privacy.focus();
         return;
       }
-      var naam = (form.naam && form.naam.value) || "";
-      var type = (form.type && form.type.value) || "";
-      var email = (form.email && form.email.value) || "";
-      var telefoon = (form.telefoon && form.telefoon.value) || "";
-      var beschrijving = (form.beschrijving && form.beschrijving.value) || "";
-      var onderwerp = "Nieuwe aanvraag via website: " + type + " — " + naam;
-      var body =
-        "Naam: " + naam +
-        "\nEmail: " + email +
-        "\nTelefoon: " + telefoon +
-        "\nType: " + type +
-        "\nBeschrijving: " + beschrijving;
-      var mailto =
-        "mailto:bartelcoucke@renoperfect.be?subject=" +
-        encodeURIComponent(onderwerp) +
-        "&body=" +
-        encodeURIComponent(body);
-      window.location.href = mailto;
-      var succes = document.getElementById("form-succes");
-      if (succes) succes.classList.add("toon");
-      form.reset();
+      if (fout) fout.classList.remove("toon");
+      if (knop) {
+        knop.disabled = true;
+        knop.textContent = "Versturen…";
+      }
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Formspree antwoordde " + res.status);
+          if (succes) succes.classList.add("toon");
+          form.reset();
+        })
+        .catch(function () {
+          if (fout) fout.classList.add("toon");
+        })
+        .then(function () {
+          if (knop) {
+            knop.disabled = false;
+            knop.textContent = knopTekst;
+          }
+        });
     });
   }
 })();
