@@ -1125,3 +1125,11 @@ p {
     padding: 14px 22px;
   }
 }
+
+/* '(huishoudelijk)' hoort bij de kop maar mag ze niet overschreeuwen (31/08). */
+.kop-toevoeging {
+  font-weight: 400;
+  font-size: .82em;
+  opacity: .75;
+  text-transform: none;
+}
