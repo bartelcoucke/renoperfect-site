@@ -937,3 +937,38 @@ p {
     padding: 14px 18px;
   }
 }
+
+/* Werkgebied-kaart (2026-08-31). Vaste hoogte, want een leeg kaartvak heeft geen inhoud
+   die het zelf kan opspannen. */
+#werkgebied-kaart {
+  height: 420px;
+  width: 100%;
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.kaart-legende {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--grijs);
+  text-align: center;
+}
+
+.legende-vlak {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  background: rgba(230, 126, 34, 0.18);
+  border: 2px solid var(--cta);
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+
+.legende-speld {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #3388ff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}

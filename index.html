@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="icon" href="assets/img/favicon.png" sizes="32x32">
   <link rel="icon" href="assets/img/renoperfect-icoon.png" sizes="512x512">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -168,6 +169,7 @@
           <ul class="check check-blauw">
             <li>Dakrenovatie en dakherstelling (pannen, leien, roofing, isolatie)</li>
             <li>Gevelrenovatie (metselwerk, crepi, gevelbekleding, structurele werken)</li>
+            <li>Chauffage en sanitair (warmtepompen en airco&rsquo;s, ventilatie, CV-ketels vervangen, leidingen vernieuwen, riolering, badkamers)</li>
             <li>Algemene renovatie (badkamer, keuken, kelder, zolder, volledige woning)</li>
             <li>Uw opbrengsteigendom conform maken: brandweer, conformiteitsattest, EPC-verbetering</li>
           </ul>
@@ -357,19 +359,14 @@
   <section class="sectie sectie-licht" id="werkgebied">
     <div class="wrap">
       <h2>Ons Werkgebied</h2>
-      <p class="intro">Wij zijn actief in gans West- en Oost-Vlaanderen en het westen van Henegouwen, met focus op:</p>
-      <ul class="steden">
-        <li>Anzegem</li><li>Oudenaarde</li><li>Zwevegem</li><li>Moeskroen</li>
-        <li>Kortrijk</li><li>Tielt</li><li>Deerlijk</li><li>Ronse</li>
-        <li>Waregem</li><li>Izegem</li><li>Gent</li><li>Wielsbeke</li>
-        <li>Roeselare</li><li>Menen</li><li>Brugge</li><li>Harelbeke</li>
-      </ul>
+      <p class="intro">Wij zijn actief in gans West- en Oost-Vlaanderen en het westen van Henegouwen.</p>
       <div class="rp-maps">
-        <iframe
-          src="https://www.google.com/maps?q=Walbrugge%2036%2C%208573%20Anzegem%2C%20Belgi%C3%AB&amp;output=embed&amp;z=12"
-          width="100%" height="350" style="border:0; border-radius:12px;"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Renoperfect — Walbrugge 36, 8573 Anzegem"></iframe>
+        <div id="werkgebied-kaart" role="img"
+             aria-label="Kaart met het werkgebied van Renoperfect en onze twee vestigingen in Anzegem en Ooigem"></div>
+        <p class="kaart-legende">
+          <span class="legende-vlak"></span> Ons werkgebied (indicatief)
+          &nbsp;&nbsp;<span class="legende-speld"></span> Onze vestigingen
+        </p>
       </div>
     </div>
   </section>
@@ -467,6 +464,7 @@
 
   <a class="rp-belknop" href="tel:+32499523325" aria-label="Bel Renoperfect"><i class="fas fa-phone"></i>&nbsp; Bel nu</a>
   <a class="rp-wa" href="https://wa.me/32499523325?text=Hallo%20Renoperfect%2C%20ik%20heb%20een%20vraag%20over%20een%20vochtprobleem%20of%20renovatie." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
