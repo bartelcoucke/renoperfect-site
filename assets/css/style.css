@@ -742,7 +742,9 @@ p {
   margin-top: 24px;
 }
 
-.spoedbox a {
+/* Let op: dit geldt bewust NIET voor knoppen. Een .btn in dit vak heeft een witte
+   achtergrond, en die kreeg hier ook witte tekst - onzichtbaar (hersteld 31/08). */
+.spoedbox a:not(.btn) {
   color: var(--wit);
   text-decoration: underline;
 }
