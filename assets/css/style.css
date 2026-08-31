@@ -972,3 +972,79 @@ p {
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
 }
+
+/* ===== Keuzeblok: schade of renovatie (2026-08-31, vraag Bartel) ==========================
+   "Er moet een duidelijk onderscheid zijn (...) ik wil wel dat de klant snel bij het juiste
+   onderdeel terechtkomt." Vandaar twee grote kaarten die zelf de link ZIJN - je hoeft geen
+   knopje te mikken, de hele kaart is klikbaar. */
+.keuze {
+  display: block;
+  padding: 34px 30px;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: var(--wit);
+  box-shadow: var(--schaduw);
+  color: var(--tekst);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.keuze:hover,
+.keuze:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.keuze i {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.keuze h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  color: var(--primair);
+}
+
+.keuze p {
+  color: var(--grijs);
+  margin: 0 0 16px;
+}
+
+.keuze-actie {
+  font-weight: 600;
+}
+
+/* Links het spoor 'schade' in het oranje/rood van de urgentie, rechts renovatie in het
+   blauw van de huisstijl. Zo herkent de bezoeker de twee sporen verderop terug. */
+.keuze-schade i,
+.keuze-schade .keuze-actie {
+  color: var(--dringend);
+}
+
+.keuze-schade:hover,
+.keuze-schade:focus-visible {
+  border-color: var(--dringend);
+}
+
+.keuze-renovatie i,
+.keuze-renovatie .keuze-actie {
+  color: var(--primair);
+}
+
+.keuze-renovatie:hover,
+.keuze-renovatie:focus-visible {
+  border-color: var(--primair);
+}
+
+.keuze-spoed {
+  margin-top: 26px;
+  font-size: 17px;
+}
+
+.tussenkop {
+  margin: 38px 0 18px;
+  font-size: 21px;
+  color: var(--primair);
+}
