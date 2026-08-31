@@ -59,3 +59,15 @@
     });
   }
 })();
+
+/* De spoedknop vult het type alvast in (2026-08-31). Wie op "dringende interventie" klikt,
+   hoeft dat niet nog eens uit de lijst te kiezen. Zonder JavaScript land je nog steeds
+   gewoon op het formulier. */
+(function () {
+  var knop = document.getElementById('knop-dringend');
+  if (!knop) return;
+  knop.addEventListener('click', function () {
+    var keuze = document.getElementById('type');
+    if (keuze) keuze.value = 'Dringende interventie';
+  });
+})();

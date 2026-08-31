@@ -224,6 +224,16 @@ p {
   color: var(--wit);
 }
 
+/* Icoon in een knop (2026-08-31): meeschalend met de tekst, zodat de waterdruppel
+   even groot blijft als je de knoptekst ooit groter of kleiner zet. */
+.btn-icoon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: currentColor;
+  vertical-align: -0.15em;
+  margin-right: 9px;
+}
+
 .btn-spoed {
   background: var(--cta);
   color: var(--wit);
