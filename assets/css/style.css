@@ -305,9 +305,17 @@ p {
   justify-content: center;
   text-align: center;
   padding: 120px 0 80px;
+  /* Luchtfoto als achtergrond (2026-08-31, vraag Bartel). Drie lagen boven elkaar:
+     1. een donkere sluier, iets zwaarder bovenaan waar de titel staat, zodat de witte
+        tekst leesbaar blijft zonder de foto plat te maken;
+     2. de foto zelf, altijd beeldvullend en gecentreerd;
+     3. het oude verloop blijft eronder staan als achtervang - laadt de foto niet,
+        dan zie je nog steeds een verzorgde hero in plaats van zwarte tekstloosheid. */
   background:
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.42) 45%, rgba(0, 0, 0, 0.52)),
+    url('../img/hero.jpg') center / cover no-repeat,
     radial-gradient(circle at 30% 20%, #5d6d7e, #1a252f 70%);
+  background-color: #1a252f;
   color: var(--wit);
 }
 
