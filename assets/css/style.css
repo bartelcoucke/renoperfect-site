@@ -12,6 +12,8 @@
   --tekst: #333333;
   --grijs: #555555;
   --wit: #ffffff;
+  --dringend: #c0392b;
+  --dringend-hover: #a02d21;
   --whatsapp: #25d366;
   --whatsapp-hover: #1ebe5d;
   --schaduw: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -232,6 +234,19 @@ p {
   fill: currentColor;
   vertical-align: -0.15em;
   margin-right: 9px;
+}
+
+/* Dringende interventie (2026-08-31, vraag Bartel): eigen ROOD, los van de oranje
+   merkkleur. Rood zegt "nu", oranje is gewoon de huisstijl - en de belknop elders op
+   de pagina gebruikt btn-spoed, dus die mocht niet meeverkleuren. */
+.btn-dringend {
+  background: var(--dringend);
+  color: var(--wit);
+}
+
+.btn-dringend:hover {
+  background: var(--dringend-hover);
+  color: var(--wit);
 }
 
 .btn-spoed {
