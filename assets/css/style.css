@@ -1048,3 +1048,80 @@ p {
   font-size: 21px;
   color: var(--primair);
 }
+
+/* ===== Afsluitblok "bel ons" (2026-08-31, vraag Bartel) ==================================
+   Het telefoonnummer is hier het belangrijkste element op het scherm, dus het staat groot
+   en alleen. De reden om te bellen staat erboven, de bereikbaarheid eronder - in die
+   volgorde leest iemand het ook. */
+.bel-blok {
+  margin: 42px auto 0;
+  max-width: 720px;
+  text-align: center;
+  background: var(--vocht);
+  border: 1px solid rgba(230, 126, 34, 0.35);
+  border-radius: var(--radius);
+  padding: 34px 28px 28px;
+}
+
+.bel-blok h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--primair);
+}
+
+.bel-blok > p {
+  color: var(--grijs);
+  margin: 0 auto 22px;
+  max-width: 520px;
+}
+
+.bel-groot {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--dringend);
+  color: var(--wit);
+  text-decoration: none;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(192, 57, 43, 0.28);
+  transition: background .15s ease, transform .15s ease;
+}
+
+.bel-groot:hover,
+.bel-groot:focus-visible {
+  background: var(--dringend-hover);
+  color: var(--wit);
+  transform: translateY(-2px);
+}
+
+.bel-groot i {
+  font-size: 24px;
+}
+
+.bel-blok .bel-onder {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: var(--grijs);
+}
+
+.bel-blok .bel-voor {
+  margin: 18px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(230, 126, 34, 0.3);
+  font-size: 14.5px;
+  color: var(--grijs);
+  max-width: 600px;
+}
+
+/* Op een telefoon moet het nummer niet over de rand lopen. */
+@media (max-width: 520px) {
+  .bel-groot {
+    font-size: 23px;
+    padding: 14px 22px;
+  }
+}
