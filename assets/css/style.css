@@ -1133,3 +1133,106 @@ p {
   opacity: .75;
   text-transform: none;
 }
+
+/* Hetzelfde afsluitblok als bij schade, maar in het blauw van het renovatiespoor
+   (31/08). Zelfde vorm = de bezoeker herkent waar hij is; andere kleur = hij weet
+   in welk van de twee sporen. */
+.blok-renovatie {
+  background: var(--renovatie);
+  border-color: rgba(44, 62, 80, 0.28);
+}
+
+.blok-renovatie .bel-groot {
+  background: var(--primair);
+  box-shadow: 0 6px 18px rgba(44, 62, 80, 0.26);
+  font-size: 24px;
+}
+
+.blok-renovatie .bel-groot:hover,
+.blok-renovatie .bel-groot:focus-visible {
+  background: var(--secundair-hover);
+}
+
+.blok-renovatie .bel-voor {
+  border-top-color: rgba(44, 62, 80, 0.22);
+}
+
+.blok-renovatie .bel-onder a {
+  color: var(--link);
+}
+
+/* ===== Leesbare opbouw van een dienstenspoor (2026-08-31) =================================
+   Bartel: "dit is nog steeds een heel lelijke layout."
+   De oorzaak was uitlijning: gecentreerde koppen boven een links uitgelijnde lijst die over
+   de volle schermbreedte liep. Hier krijgt elk onderdeel een eigen, begrensde vorm. */
+.sectie-intro {
+  max-width: 780px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.sectie-intro .intro {
+  margin: 0 0 14px;
+  font-size: 17.5px;
+  line-height: 1.7;
+  color: var(--grijs);
+}
+
+.sectie-intro .intro:first-child {
+  font-size: 19px;
+  color: var(--tekst);
+}
+
+.sectie-intro .intro:last-child {
+  margin-bottom: 0;
+}
+
+/* De opsomming als kaart, in twee kolommen. Acht punten onder elkaar over de volle breedte
+   lezen als een boodschappenlijst; naast elkaar in een kader lezen ze als een aanbod. */
+.dienst-lijst {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--wit);
+  border-radius: var(--radius);
+  box-shadow: var(--schaduw);
+  padding: 30px 34px;
+}
+
+.dienst-lijst .check {
+  margin: 0;
+  columns: 2;
+  column-gap: 40px;
+}
+
+.dienst-lijst .check li {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 780px) {
+  .dienst-lijst .check {
+    columns: 1;
+  }
+  .dienst-lijst {
+    padding: 24px 22px;
+  }
+}
+
+/* De slotzin is geen gewone alinea maar een aantekening bij het aanbod. */
+.dienst-noot {
+  max-width: 960px;
+  margin: 22px auto 0;
+  padding: 16px 22px;
+  border-left: 4px solid var(--cta);
+  background: var(--vocht);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--tekst);
+  font-size: 16px;
+}
+
+/* De tussenkop hoorde bij de kolom eronder, niet aan de linkerrand van het scherm. */
+.tussenkop {
+  max-width: 960px;
+  margin: 46px auto 20px;
+  text-align: center;
+}
