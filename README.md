@@ -57,6 +57,30 @@ Pijltjes en stippen verschijnen vanzelf zodra er meer dan een foto in een rechth
 blader je met de pijltjes of met de pijltjestoetsen, en sluit je met Escape of met een klik
 naast de foto.
 
+## Vóór elke uitrol: versiestempel
+
+De webserver cachet CSS en JS een jaar lang. Zonder stempel ziet een terugkerende
+bezoeker een wijziging nooit. Draai daarom telkens:
+
+```
+python tools/stempel.py
+```
+
+Dat zet `?v=<hash>` achter elke verwijzing naar een eigen stijl- of scriptbestand.
+`python tools/stempel.py --controle` schrijft niets en meldt alleen of alles bij is.
+
+## Talen
+
+De site bestaat in drie talen:
+
+- `index.html` — Nederlands (hoofdversie)
+- `fr/index.html` — Frans
+- `en/index.html` — Engels
+
+De vertalingen zijn gemaakt uit de Nederlandse pagina en delen dezelfde structuur,
+foto's en gestructureerde gegevens. Verandert er iets aan de Nederlandse pagina, dan
+moeten de twee andere mee bijgewerkt worden.
+
 ## Later
 
 - Echte werffoto’s i.p.v. “Foto volgt”

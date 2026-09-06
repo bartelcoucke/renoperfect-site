@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.renoperfect.be/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.renoperfect.be/"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://www.renoperfect.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.renoperfect.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.renoperfect.be/"/>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.renoperfect.be/algemene-voorwaarden.html</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.renoperfect.be/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.renoperfect.be/"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://www.renoperfect.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.renoperfect.be/en/"/>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.renoperfect.be/gebruiksvoorwaarden.html</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.renoperfect.be/en/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.renoperfect.be/"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://www.renoperfect.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.renoperfect.be/en/"/>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://www.renoperfect.be/privacyverklaring.html</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://www.renoperfect.be/algemene-voorwaarden.html</loc><lastmod>2026-09-07</lastmod><priority>0.3</priority></url>
+  <url><loc>https://www.renoperfect.be/gebruiksvoorwaarden.html</loc><lastmod>2026-09-07</lastmod><priority>0.3</priority></url>
+  <url><loc>https://www.renoperfect.be/privacyverklaring.html</loc><lastmod>2026-09-07</lastmod><priority>0.3</priority></url>
 </urlset>

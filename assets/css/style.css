@@ -1837,3 +1837,43 @@ p {
   line-height: 1.7;
   color: var(--grijs);
 }
+
+/* Taalkiezer in de balk (2026-09-07). Drie korte codes, de huidige taal opgelicht.
+   Klein gehouden: het is navigatie voor een minderheid van de bezoekers. */
+.taalkiezer {
+  display: flex;
+  gap: 2px;
+  margin-left: 18px;
+}
+
+.taalkiezer a {
+  padding: 5px 9px;
+  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color .15s ease, background .15s ease;
+}
+
+.taalkiezer a:hover {
+  color: var(--wit);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.taalkiezer a.taal-actief {
+  color: var(--wit);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 767px) {
+  .taalkiezer {
+    margin: 0 auto 0 0;
+    order: 2;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+}
