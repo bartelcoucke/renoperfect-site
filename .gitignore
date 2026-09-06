@@ -3,3 +3,7 @@ node_modules/
 Thumbs.db
 *.log
 .env
+
+# Reservekopieen van de tekstbewerker
+.bewerk-backups/
+.claude/

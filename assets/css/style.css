@@ -1,24 +1,35 @@
 /* Renoperfect — statische site, copy bouwplan v1.1 */
 :root {
-  --primair: #2c3e50;
-  --cta: #e67e22;
-  --cta-hover: #d35400;
-  --secundair-hover: #34495e;
-  --accent: #ED5B23;
-  --link: #BE4219;
-  --licht: #f4f4f9;
-  --vocht: #fef5e7;
-  --renovatie: #eaf2f8;
-  --tekst: #333333;
-  --grijs: #555555;
+  /* Palet uit het voorstel (2026-09-06). De oude namen blijven staan zodat de hele site
+     in een keer meekleurt; alleen de waarden zijn vervangen.
+       ink #1a1a2e  - donker, bijna zwart: autoriteit
+       oranje #e8611a - warm accent, de enige kleur die nog opvalt
+     De gekleurde sectievlakken (geel voor schade, blauw voor renovatie) zijn vervallen:
+     wit en #f7f7fa wisselen elkaar af, verder niets. */
+  --primair: #1a1a2e;
+  --ink-light: #2d2d44;
+  --cta: #e8611a;
+  --cta-hover: #cf5215;
+  --secundair-hover: #2d2d44;
+  --accent: #e8611a;
+  --accent-licht: #fef0e8;
+  --link: #cf5215;
+  --licht: #f7f7fa;
+  --vocht: #fef0e8;
+  --renovatie: #f7f7fa;
+  --tekst: #333345;
+  --grijs: #7a7a8c;
+  --rand: #e5e5ed;
   --wit: #ffffff;
+  --donker: #111122;
   --dringend: #c0392b;
   --dringend-hover: #a02d21;
   --whatsapp: #25d366;
   --whatsapp-hover: #1ebe5d;
-  --schaduw: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --radius: 12px;
-  --max: 1200px;
+  --schaduw: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --radius: 4px;
+  --radius-lg: 6px;
+  --max: 1180px;
 }
 
 *,
@@ -37,7 +48,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 17px;
   line-height: 1.6;
   color: var(--tekst);
@@ -64,7 +75,10 @@ h4,
 .badge,
 .stat-title,
 .step-label {
-  font-family: "Poppins", sans-serif;
+  /* Poppins is een geometrische letter met ronde, bijna kinderlijke vormen. Inter is een
+     neutrale grotesk: dezelfde leesbaarheid, een zakelijker toon (2026-09-06, vraag
+     Bartel). */
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 h1,
@@ -77,18 +91,23 @@ h3 {
 
 h1 {
   font-weight: 700;
-  font-size: 52px;
+  font-size: 54px;
+  line-height: 1.06;
+  letter-spacing: -1.4px;
 }
 
 h2 {
   font-weight: 700;
-  font-size: 38px;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
   text-align: center;
 }
 
 h3 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 21px;
+  letter-spacing: -0.3px;
 }
 
 p {
@@ -101,7 +120,7 @@ p {
 }
 
 .sectie {
-  padding: 90px 0;
+  padding: 96px 0;
 }
 
 .sectie-licht {
@@ -110,9 +129,25 @@ p {
 
 .lead {
   text-align: center;
-  font-size: 19px;
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-size: 16.5px;
+  line-height: 1.7;
   color: var(--grijs);
-  margin-bottom: 16px;
+}
+
+/* Tweede regel onder de lead (2026-09-06, vraag Bartel). De lead zegt VOOR WIE we komen,
+   deze regel zegt WAT we doen. Donkerder en zwaarder dan de lead, met een kort streepje
+   eronder, zodat de twee regels als kop en belofte lezen en niet als twee halve zinnen. */
+/* Klein etiket in de kleur van het accent, zoals de section-kicker uit het voorstel. */
+.lead-belofte {
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cta);
+  margin: 0 0 36px;
 }
 
 .intro {
@@ -125,20 +160,39 @@ p {
   text-align: center;
 }
 
+/* Een tel:-link die op de computer niets doet, mag er ook niet uitzien alsof hij iets
+   doet (2026-09-06). De klasse wordt door main.js gezet, alleen op toestellen zonder
+   aanraakscherm. */
+.tel-statisch {
+  cursor: default;
+  user-select: text;
+}
+
+.tel-statisch:hover,
+.tel-statisch:focus-visible {
+  transform: none;
+}
+
 /* Header */
+/* Donkere, semi-transparante balk uit het voorstel. Hij ligt over de hero in plaats van
+   erboven, waardoor de pagina bovenaan een geheel wordt. */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  background: var(--wit);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background: rgba(26, 26, 46, 0.97);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 72px;
+  height: 72px;
   gap: 16px;
 }
 
@@ -151,7 +205,7 @@ p {
 
 .logo img {
   display: block;
-  height: 60px;
+  height: 42px;
   width: auto;
 }
 
@@ -168,16 +222,19 @@ p {
 }
 
 .nav a {
-  color: var(--primair);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 14.5px;
+  letter-spacing: 0.01em;
   padding: 8px 0;
   border-bottom: 2px solid transparent;
+  transition: color .2s ease;
 }
 
 .nav a:hover,
 .nav a:focus {
+  color: var(--wit);
   border-bottom-color: var(--cta);
 }
 
@@ -185,8 +242,8 @@ p {
   display: none;
   background: none;
   border: 0;
-  font-size: 28px;
-  color: var(--primair);
+  font-size: 26px;
+  color: var(--wit);
   cursor: pointer;
 }
 
@@ -195,15 +252,23 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   border: 0;
-  border-radius: 10px;
-  padding: 16px 32px;
-  font-size: 18px;
+  border-radius: var(--radius);
+  padding: 14px 28px;
+  font-size: 14.5px;
   font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
   line-height: 1.2;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+/* Het pijltje mag meebewegen maar niet meeschreeuwen. */
+.btn-pijl {
+  font-size: 1.05em;
+  opacity: .85;
 }
 
 .btn-primair {
@@ -214,6 +279,8 @@ p {
 .btn-primair:hover {
   background: var(--cta-hover);
   color: var(--wit);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(232, 97, 26, 0.30);
 }
 
 .btn-secundair {
@@ -264,22 +331,28 @@ p {
 .btn-ghost {
   background: transparent;
   color: var(--wit);
-  border: 2px solid var(--wit);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .btn-ghost:hover {
-  background: var(--wit);
-  color: var(--primair);
+  border-color: var(--wit);
+  color: var(--wit);
 }
 
 .btn-whatsapp {
-  background: var(--whatsapp);
-  color: var(--wit);
+  background: var(--wit);
+  border: 1px solid rgba(44, 62, 80, 0.22);
+  color: var(--primair);
 }
 
 .btn-whatsapp:hover {
-  background: var(--whatsapp-hover);
-  color: var(--wit);
+  background: var(--licht);
+  color: var(--primair);
+}
+
+.btn-whatsapp i {
+  color: var(--whatsapp);
+  font-size: 17px;
 }
 
 .btn-wit-oranje {
@@ -299,23 +372,18 @@ p {
 /* Hero */
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 0 80px;
-  /* Luchtfoto als achtergrond (2026-08-31, vraag Bartel). Drie lagen boven elkaar:
-     1. een donkere sluier, iets zwaarder bovenaan waar de titel staat, zodat de witte
-        tekst leesbaar blijft zonder de foto plat te maken;
-     2. de foto zelf, altijd beeldvullend en gecentreerd;
-     3. het oude verloop blijft eronder staan als achtervang - laadt de foto niet,
-        dan zie je nog steeds een verzorgde hero in plaats van zwarte tekstloosheid. */
+  padding: 120px 0 90px;
+  /* Luchtfoto met een donkere sluier die VAN LINKS zwaar is en naar rechts oplost
+     (2026-09-06). De tekst staat links en blijft daardoor rustig leesbaar zonder de foto
+     over de volle breedte plat te drukken. */
   background:
-    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.42) 45%, rgba(0, 0, 0, 0.52)),
+    linear-gradient(135deg, rgba(26, 26, 46, 0.94) 0%, rgba(26, 26, 46, 0.72) 100%),
     url('../img/hero.jpg') center / cover no-repeat,
-    radial-gradient(circle at 30% 20%, #5d6d7e, #1a252f 70%);
-  background-color: #1a252f;
+    var(--donker);
+  background-color: var(--donker);
   color: var(--wit);
 }
 
@@ -324,44 +392,161 @@ p {
   color: var(--wit);
 }
 
+/* Een leeskolom links in plaats van alles gecentreerd. */
+.hero-inhoud {
+  max-width: 640px;
+}
+
+/* Klein etiket boven de titel: zegt in drie woorden wat we doen, zonder een tweede
+   kop te worden. Het oranje stipje is de enige kleur in dit blok. */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px;
+  padding: 6px 14px 6px 12px;
+  border: 1px solid rgba(232, 97, 26, 0.45);
+  border-radius: var(--radius);
+  background: rgba(232, 97, 26, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cta);
+}
+
+.hero-badge-stip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cta);
+}
+
+.hero h1 {
+  margin: 0 0 18px;
+  font-size: 56px;
+}
+
 .hero .lead-hero {
-  font-size: 20px;
-  margin-bottom: 28px;
+  max-width: 540px;
+  margin: 0 0 34px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .hero-btns {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
+/* Spoed: een rustige regel onder een dun lijntje, geen tweede blok vol kleur. */
 .hero-spoed {
-  margin-top: 20px;
-  font-size: 17px;
+  /* Ruimer van de twee knoppen erboven gezet (2026-09-06, vraag Bartel): het spoedblok
+     is een aparte boodschap en moet niet aan de knoppenrij vastplakken. */
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 560px;
 }
 
-.hero-spoed a {
+.hero-spoed-label {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-spoed-rij {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Het nummer is het enige element dat hier opvalt. */
+.hero-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--wit);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.hero-tel i {
+  font-size: 15px;
+  color: var(--cta);
+}
+
+.hero-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.hero-wa:hover,
+.hero-wa:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--wit);
+}
+
+/* Het WhatsApp-teken is overal groen; de knop eromheen blijft neutraal (2026-09-06,
+   vraag Bartel: "enkel het icoontje"). */
+.hero-wa i {
+  font-size: 16px;
+  color: var(--whatsapp);
+}
+
+.hero-spoed-noot {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-spoed-noot a {
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Stats */
+/* Trust bar uit het voorstel: vier cijfers op een lijn, gescheiden door dunne strepen.
+   Het getal is de boodschap; het icoontje erboven is weggelaten. */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin: 40px 0;
+  gap: 0;
+  margin: 44px 0;
+  border-top: 1px solid var(--rand);
+  border-bottom: 1px solid var(--rand);
+  padding: 32px 0;
 }
 
 .stat {
   text-align: center;
+  padding: 0 16px;
+}
+.stat + .stat {
+  border-left: 1px solid var(--rand);
 }
 
 .stat i {
-  color: var(--cta);
-  font-size: 42px;
-  margin-bottom: 8px;
+  display: none;
 }
 
 .stat-title {
@@ -372,6 +557,11 @@ p {
 
 .stat span {
   display: block;
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--grijs);
 }
 
@@ -388,10 +578,37 @@ p {
   gap: 30px;
 }
 
+/* Kaarten uit het voorstel: een dunne rand in plaats van een zwevende schaduw, en bij
+   hover een oranje lijn die vanaf links openschuift. */
 .kaart {
-  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rand);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.kaart::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--cta);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+
+.kaart:hover {
+  border-color: var(--cta);
   box-shadow: var(--schaduw);
-  padding: 40px;
+}
+
+.kaart:hover::before {
+  transform: scaleX(1);
 }
 
 .kaart-vocht {
@@ -411,7 +628,7 @@ p {
 }
 
 .sub-oranje {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: var(--cta);
@@ -419,7 +636,7 @@ p {
 }
 
 .sub-blauw {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: var(--primair);
@@ -477,25 +694,31 @@ p {
 }
 
 .step-label {
-  font-size: 13px;
-  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
   color: var(--cta);
   margin-bottom: 8px;
 }
 
-.icoon-groot {
-  font-size: 40px;
+ /* Iconen (2026-09-06, vraag Bartel: "veel te kinderlijk"). Font Awesome heeft alleen
+    massieve glyphs; op 40 pixels in fel oranje worden dat pictogrammen uit een
+    kinderboek. Klein, grijsblauw en in een rustig vierkantje lezen ze als een label bij
+    de tekst in plaats van als een plaatje. */
+.icoon-groot,
+.icoon-donker,
+.keuze i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: var(--accent-licht);
+  font-size: 19px;
   color: var(--cta);
-  display: block;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.icoon-donker {
-  font-size: 44px;
-  color: var(--primair);
-  display: block;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 /* Projecten */
@@ -507,36 +730,211 @@ p {
 
 .project {
   background: var(--wit);
-  border-radius: var(--radius);
-  box-shadow: var(--schaduw);
+  border: 1px solid var(--rand);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.project:hover {
+  border-color: var(--cta);
+  box-shadow: var(--schaduw);
 }
 
+/* ===== Voor en na, elk met een eigen carrousel (2026-09-06, vraag Bartel) ================
+   Twee gelijke rechthoeken naast elkaar. Een dunne witte naad ertussen maakt duidelijk dat
+   het om twee losse beelden gaat en niet om een panorama. */
 .voor-na {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--wit);
 }
 
-.foto-ph {
-  min-height: 160px;
-  background: #cfd6dd;
+.fotos {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #d7dde3;
+}
+
+.fotos-spoor {
+  display: flex;
+  height: 100%;
+  transition: transform .35s ease;
+}
+
+.foto {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.foto-leeg {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--grijs);
   font-size: 13px;
   font-weight: 600;
-  position: relative;
 }
 
-.foto-ph span {
+.fotos-label {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 10px;
+  z-index: 2;
+  background: rgba(26, 26, 46, 0.78);
+  color: var(--wit);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: var(--radius);
+}
+
+/* Pijltjes en stippen worden door main.js toegevoegd, en alleen als er meer dan een foto
+   in de rechthoek zit. */
+.fotos-knop {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(26, 26, 46, 0.55);
+  color: var(--wit);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+
+.fotos-knop:hover,
+.fotos-knop:focus-visible {
+  background: rgba(26, 26, 46, 0.85);
+}
+
+.fotos-vorige { left: 8px; }
+.fotos-volgende { right: 8px; }
+
+.fotos-stippen {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.fotos-stip {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+}
+
+.fotos-stip[aria-current="true"] {
+  background: var(--cta);
+}
+
+/* ===== Foto uitvergroten (2026-09-06, vraag Bartel) ======================================
+   Een klik op een projectfoto opent hem groot over de pagina. Alleen echte foto's zijn
+   klikbaar; op een lege plaatshouder valt niets te vergroten. */
+.foto img {
+  cursor: zoom-in;
+}
+
+/* Het uitvergrootvenster mag niet in het bronbestand belanden; de bewerker haalt het
+   samen met de andere door JavaScript gemaakte onderdelen weg. */
+
+.vergroot {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 17, 34, 0.94);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.vergroot.toon {
+  display: flex;
+}
+
+.vergroot img {
+  max-width: 92vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+.vergroot-bijschrift {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  text-align: center;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+}
+
+.vergroot-knop {
+  position: absolute;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--wit);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+
+.vergroot-knop:hover,
+.vergroot-knop:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.vergroot-sluit { top: 18px; right: 18px; }
+.vergroot-vorige { top: 50%; left: 18px; transform: translateY(-50%); }
+.vergroot-volgende { top: 50%; right: 18px; transform: translateY(-50%); }
+
+@media (max-width: 767px) {
+  .vergroot-vorige { left: 10px; }
+  .vergroot-volgende { right: 10px; }
+
+  .vergroot img {
+    max-width: 96vw;
+    max-height: 70vh;
+  }
 }
 
 .project-body {
@@ -546,11 +944,13 @@ p {
 .badge {
   display: inline-block;
   color: var(--wit);
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 20px;
-  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
 }
 
 .badge-vocht {
@@ -583,7 +983,7 @@ p {
 }
 
 .naamregel {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   font-size: 14px;
   color: var(--primair);
@@ -656,10 +1056,17 @@ p {
 .form textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #d0d5dd;
-  border-radius: 8px;
+  border: 1px solid var(--rand);
+  border-radius: var(--radius);
   font: inherit;
   margin-bottom: 16px;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--cta);
+  box-shadow: 0 0 0 3px rgba(232, 97, 26, 0.12);
 }
 
 .form .accept {
@@ -751,16 +1158,24 @@ p {
 
 /* Footer */
 .footer {
-  background: var(--primair);
-  color: var(--wit);
+  background: var(--donker);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
-  padding: 50px 20px 30px;
+  padding: 56px 20px 32px;
+  font-size: 14px;
 }
 
-.footer p,
+.footer p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
 .footer a {
-  color: var(--wit);
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  transition: color .2s ease;
+}
+.footer a:hover {
+  color: var(--cta);
 }
 
 .footer .muted,
@@ -794,12 +1209,12 @@ p {
   z-index: 9999;
   background: var(--cta);
   color: #fff;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
-  font-size: 17px;
-  padding: 14px 22px;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-size: 15px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
   text-decoration: none;
 }
 
@@ -813,22 +1228,24 @@ p {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  width: 56px;
-  height: 56px;
+  /* Was een fel groene bal - in het rustiger geheel was dat het luidste op het scherm.
+     Donker met een wit teken blijft even herkenbaar aan zijn vorm (2026-09-06). */
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: var(--whatsapp);
-  color: #fff;
+  background: var(--primair);
+  color: var(--whatsapp);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 24px;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 .rp-wa:hover {
-  background: var(--whatsapp-hover);
-  color: #fff;
+  background: var(--secundair-hover);
+  color: var(--whatsapp-hover);
 }
 
 .privacy-pagina {
@@ -865,12 +1282,30 @@ p {
   }
 
   .hero {
-    padding: 80px 0 60px;
+    /* De balk staat vast bovenaan en is 72px hoog; zonder extra ruimte plakt het etiket
+       eronder tegen het logo. */
+    padding: 118px 0 64px;
     min-height: auto;
   }
 
   .hero .lead-hero {
     font-size: 17px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  /* Op een telefoon is naast elkaar te krap: de knoppen onder elkaar en even breed,
+     zodat elke knop een volwaardig trefvlak is. */
+  .hero-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-tel {
+    font-size: 20px;
   }
 
   .logo img {
@@ -891,7 +1326,8 @@ p {
     top: 72px;
     left: 0;
     right: 0;
-    background: #fff;
+    background: rgba(26, 26, 46, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     flex-direction: column;
     padding: 16px 24px 24px;
     gap: 8px;
@@ -995,11 +1431,7 @@ p {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
-.keuze i {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 14px;
-}
+
 
 .keuze h3 {
   font-size: 22px;
@@ -1018,9 +1450,8 @@ p {
 
 /* Links het spoor 'schade' in het oranje/rood van de urgentie, rechts renovatie in het
    blauw van de huisstijl. Zo herkent de bezoeker de twee sporen verderop terug. */
-.keuze-schade i,
 .keuze-schade .keuze-actie {
-  color: var(--dringend);
+  color: var(--cta-hover);
 }
 
 .keuze-schade:hover,
@@ -1028,7 +1459,6 @@ p {
   border-color: var(--dringend);
 }
 
-.keuze-renovatie i,
 .keuze-renovatie .keuze-actie {
   color: var(--primair);
 }
@@ -1058,14 +1488,14 @@ p {
   max-width: 720px;
   text-align: center;
   background: var(--vocht);
-  border: 1px solid rgba(230, 126, 34, 0.35);
-  border-radius: var(--radius);
-  padding: 34px 28px 28px;
+  border: 1px solid rgba(230, 126, 34, 0.22);
+  border-radius: 10px;
+  padding: 30px 28px 26px;
 }
 
 .bel-blok h3 {
   margin: 0 0 8px;
-  font-size: 24px;
+  font-size: 21px;
   color: var(--primair);
 }
 
@@ -1075,32 +1505,64 @@ p {
   max-width: 520px;
 }
 
+/* Herzien op 2026-09-06 (vraag Bartel: te veel kleur). Een felrode pil van 30 pixels met
+   een gekleurde slagschaduw schreeuwt; donkerblauw op een rustig vlak leest even dringend
+   maar volwassen. Groen komt alleen nog terug in het WhatsApp-teken zelf. */
 .bel-groot {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  background: var(--dringend);
+  gap: 11px;
+  background: var(--primair);
   color: var(--wit);
   text-decoration: none;
-  font-family: 'Poppins', system-ui, sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  padding: 16px 34px;
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(192, 57, 43, 0.28);
-  transition: background .15s ease, transform .15s ease;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  transition: background .15s ease;
 }
 
 .bel-groot:hover,
 .bel-groot:focus-visible {
-  background: var(--dringend-hover);
+  background: var(--secundair-hover);
   color: var(--wit);
-  transform: translateY(-2px);
 }
 
 .bel-groot i {
-  font-size: 24px;
+  font-size: 16px;
+  color: var(--cta);
+}
+
+/* Bellen of WhatsApp naast elkaar (2026-09-06, vraag Bartel). Het nummer blijft de
+   grootste knop: wie schade heeft belt het liefst. WhatsApp staat ernaast voor wie
+   liever eerst een foto stuurt. */
+.bel-acties {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.bel-wa {
+  background: var(--wit);
+  border: 1px solid rgba(44, 62, 80, 0.22);
+  color: var(--primair);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 20px;
+}
+
+.bel-wa:hover,
+.bel-wa:focus-visible {
+  background: var(--licht);
+  color: var(--primair);
+}
+
+.bel-wa i {
+  font-size: 18px;
+  color: var(--whatsapp);
 }
 
 .bel-blok .bel-onder {
@@ -1121,8 +1583,30 @@ p {
 /* Op een telefoon moet het nummer niet over de rand lopen. */
 @media (max-width: 520px) {
   .bel-groot {
-    font-size: 23px;
-    padding: 14px 22px;
+    font-size: 19px;
+    padding: 13px 18px;
+  }
+
+  .bel-acties {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bel-acties .bel-groot {
+    justify-content: center;
+    font-size: 19px;
+    padding: 13px 16px;
+    gap: 10px;
+  }
+
+  /* Het nummer moet op een telefoon op een lijn passen; afgebroken leest het als twee
+     nummers. */
+  .bel-acties .bel-groot span {
+    white-space: nowrap;
+  }
+
+  .bel-acties .bel-groot i {
+    font-size: 16px;
   }
 }
 
@@ -1143,14 +1627,18 @@ p {
 }
 
 .blok-renovatie .bel-groot {
-  background: var(--primair);
-  box-shadow: 0 6px 18px rgba(44, 62, 80, 0.26);
-  font-size: 24px;
+  background: var(--cta);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.blok-renovatie .bel-groot i {
+  color: var(--wit);
 }
 
 .blok-renovatie .bel-groot:hover,
 .blok-renovatie .bel-groot:focus-visible {
-  background: var(--secundair-hover);
+  background: var(--cta-hover);
 }
 
 .blok-renovatie .bel-voor {
@@ -1219,10 +1707,13 @@ p {
 }
 
 /* De slotzin is geen gewone alinea maar een aantekening bij het aanbod. */
+/* Belofte en werkwijze staan sinds 2026-09-06 samen in dit kader, direct onder de
+   opsomming van de diensten (vraag Bartel). De belofte is de kop, de werkwijze de
+   toelichting eronder. */
 .dienst-noot {
   max-width: 960px;
   margin: 22px auto 0;
-  padding: 16px 22px;
+  padding: 20px 24px;
   border-left: 4px solid var(--cta);
   background: var(--vocht);
   border-radius: 0 var(--radius) var(--radius) 0;
@@ -1230,9 +1721,107 @@ p {
   font-size: 16px;
 }
 
+.dienst-noot p {
+  margin: 0;
+}
+
+.dienst-noot-kop {
+  margin-bottom: 6px !important;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cta);
+}
+
 /* De tussenkop hoorde bij de kolom eronder, niet aan de linkerrand van het scherm. */
 .tussenkop {
   max-width: 960px;
   margin: 46px auto 20px;
   text-align: center;
+}
+
+/* ===== Juridische pagina's (2026-09-06) =================================================
+   Algemene voorwaarden, gebruiksvoorwaarden en privacyverklaring delen dezelfde opmaak:
+   een smalle leeskolom, links uitgelijnde koppen en rustige tekst. Juridische tekst wordt
+   gelezen, niet gescand, dus geen gecentreerde koppen of kaders hier. */
+.juridisch {
+  padding: 132px 0 90px;
+}
+
+.juridisch .wrap {
+  max-width: 780px;
+}
+
+.juridisch-kruimel {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--grijs);
+}
+
+.juridisch h1 {
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+.juridisch h2 {
+  text-align: left;
+  font-size: 21px;
+  margin: 38px 0 10px;
+}
+
+.juridisch p,
+.juridisch li {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--tekst);
+}
+
+.juridisch-inleiding {
+  font-size: 18px !important;
+  color: var(--grijs) !important;
+  margin-bottom: 8px;
+}
+
+.juridisch ol,
+.juridisch ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.juridisch li {
+  margin-bottom: 10px;
+}
+
+/* De prijsherzieningsformule moet als formule leesbaar blijven. */
+.juridisch-formule {
+  margin: 16px 0;
+  padding: 14px 18px;
+  background: var(--licht);
+  border-left: 3px solid var(--cta);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 15px !important;
+}
+
+.juridisch-datum {
+  margin-top: 34px;
+  font-size: 14px !important;
+  color: var(--grijs) !important;
+}
+
+.juridisch-terug {
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rand);
+}
+
+@media (max-width: 767px) {
+  .juridisch {
+    padding: 112px 0 64px;
+  }
+
+  .juridisch h1 {
+    font-size: 30px;
+  }
 }

@@ -1,0 +1,7 @@
+# Renoperfect BV — https://www.renoperfect.be/
+User-agent: *
+Allow: /
+Disallow: /.bewerk-backups/
+Disallow: /tools/
+
+Sitemap: https://www.renoperfect.be/sitemap.xml
