@@ -37,9 +37,15 @@
         knop.disabled = true;
         knop.textContent = "Versturen…";
       }
+      /* _replyto laat een antwoord op de melding rechtstreeks naar de aanvrager gaan
+         (2026-09-06). */
+      var gegevens = new FormData(form);
+      var email = form.querySelector("#email");
+      if (email && email.value) gegevens.set("_replyto", email.value);
+
       fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: gegevens,
         headers: { Accept: "application/json" }
       })
         .then(function (res) {

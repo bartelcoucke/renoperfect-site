@@ -603,12 +603,17 @@
           <form class="form" id="contactformulier" action="https://formspree.io/f/mzeplvpn" method="POST">
             <div id="form-succes" class="succes">Bedankt. We nemen zo snel mogelijk contact met u op. Bij een spoedgeval belt u best +32 499 523 325.</div>
             <div id="form-fout" class="fout">Verzenden lukte niet. Bel ons op +32 499 523 325 of mail naar bartelcoucke@renoperfect.be.</div>
+            <!-- Formspree-velden: _subject zet de onderwerpregel van de mail, _replyto zorgt
+                 dat een antwoord rechtstreeks naar de aanvrager gaat, en _gotcha is een
+                 verborgen val: bots vullen die in, mensen zien hem niet (2026-09-06). -->
+            <input type="hidden" name="_subject" value="Offerte-aanvraag via renoperfect.be">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <label for="naam">Naam</label>
-            <input id="naam" name="naam" type="text" required="">
+            <input id="naam" name="naam" type="text" autocomplete="name" required="">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required="">
+            <input id="email" name="email" type="email" autocomplete="email" required="">
             <label for="telefoon">Telefoon</label>
-            <input id="telefoon" name="telefoon" type="tel" required="">
+            <input id="telefoon" name="telefoon" type="tel" autocomplete="tel" required="">
             <label for="type">Type</label>
             <select id="type" name="type" required="">
               <option value="">Kies een type</option>
