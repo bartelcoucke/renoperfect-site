@@ -1825,3 +1825,15 @@ p {
     font-size: 30px;
   }
 }
+
+/* Gemeentelijst onder de kaart (2026-09-06). Kleiner en grijzer dan de zin erboven: het is
+   nuttige informatie voor wie zoekt op zijn gemeente, maar het mag de sectie niet
+   overnemen. Bewust zichtbaar - verstopte tekst is voor Google een reden tot straf. */
+.werkgebied-gemeenten {
+  max-width: 780px;
+  margin: 10px auto 0;
+  text-align: center;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--grijs);
+}
