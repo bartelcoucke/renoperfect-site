@@ -92,6 +92,39 @@
     }).catch(function () { /* een mislukte meting mag de site nooit storen */ });
   }
 
+  /* ---- Gebeurtenissen: bellen, WhatsApp en een verzonden formulier -----------------------
+     De audit vroeg om te kunnen tellen hoeveel aanvragen de site oplevert. Dat gebeurt in
+     hetzelfde systeem als de bezoekmeting: geen cookies, geen externe dienst, dus ook
+     hiervoor geen toestemming nodig. Er vertrekt enkel WELKE knop geklikt is, nooit wat
+     iemand ingevuld heeft. */
+  function meldGebeurtenis(naam) {
+    var ruw = JSON.stringify({ pad: location.pathname.slice(0, 200), gebeurtenis: naam });
+    if (navigator.sendBeacon) {
+      try {
+        navigator.sendBeacon('/api/bezoek', new Blob([ruw], { type: 'application/json' }));
+        return;
+      } catch (e) { /* val terug op fetch */ }
+    }
+    fetch('/api/bezoek', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: ruw,
+      keepalive: true
+    }).catch(function () {});
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('a');
+    if (!el) return;
+    var href = el.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) meldGebeurtenis('telefoon');
+    else if (href.indexOf('wa.me') !== -1) meldGebeurtenis('whatsapp');
+  }, true);
+
+  document.addEventListener('submit', function (e) {
+    if (e.target && e.target.id === 'contactformulier') meldGebeurtenis('offerte-aanvraag');
+  }, true);
+
   /* Pas melden als de pagina echt bekeken wordt, niet bij een voorgeladen tabblad. */
   if (document.visibilityState === 'hidden') {
     document.addEventListener('visibilitychange', function eens() {

@@ -28,7 +28,10 @@ import sys
 
 WORTEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGINAS = ("index.html", "privacyverklaring.html", "algemene-voorwaarden.html",
-           "gebruiksvoorwaarden.html", "fr/index.html", "en/index.html")
+           "gebruiksvoorwaarden.html", "fr/index.html", "en/index.html",
+           "fr/confidentialite.html", "en/privacy.html",
+           "schadeherstel.html", "dakwerken.html", "gevelwerken.html",
+           "technieken.html", "renovatie.html")
 
 # assets/... of ../assets/... gevolgd door .css of .js, met een eventuele oude stempel
 PATROON = re.compile(r'((?:\.\./)?assets/(?:css|js)/[A-Za-z0-9_.-]+\.(?:css|js))(\?v=[0-9a-f]{8})?')

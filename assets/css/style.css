@@ -1921,3 +1921,152 @@ p {
 #werkgebied-kaart {
   position: relative;
 }
+
+/* ===== Dienstpagina's (2026-09-07, uit de audit) =========================================
+   Vijf aparte pagina's per dienst, zodat "dakwerken Kortrijk" en "gevelrenovatie Kortrijk"
+   niet langer op dezelfde URL met elkaar concurreren. */
+.dienst {
+  padding: 132px 0 90px;
+}
+
+.dienst .wrap {
+  max-width: 860px;
+}
+
+.dienst h1 {
+  font-size: 40px;
+  margin-bottom: 18px;
+}
+
+.dienst h2 {
+  text-align: left;
+  font-size: 24px;
+  margin: 46px 0 14px;
+}
+
+.dienst p {
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.dienst .sectie-intro {
+  max-width: none;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.dienst .sectie-intro .intro {
+  text-align: left;
+}
+
+.dienst .dienst-lijst {
+  margin-top: 0;
+}
+
+.dienst-fotos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 34px 0 10px;
+}
+
+.dienst-foto {
+  margin: 0;
+}
+
+.dienst-foto picture {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--rand);
+}
+
+.dienst-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.dienst-foto figcaption {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--grijs);
+}
+
+/* Veelgestelde vragen: dichtgeklapt zodat de pagina leesbaar blijft, maar de tekst
+   staat wel in de HTML zodat Google en AI-assistenten hem meenemen. */
+.vragen {
+  margin-top: 6px;
+}
+
+.vraag {
+  border-bottom: 1px solid var(--rand);
+}
+
+.vraag summary {
+  padding: 16px 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16.5px;
+  color: var(--primair);
+  list-style: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.vraag summary::-webkit-details-marker {
+  display: none;
+}
+
+.vraag summary::after {
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 14px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cta);
+}
+
+.vraag[open] summary::after {
+  content: "2";
+}
+
+.vraag p {
+  margin: 0 0 18px;
+  color: var(--grijs);
+}
+
+@media (max-width: 767px) {
+  .dienst {
+    padding: 112px 0 64px;
+  }
+
+  .dienst h1 {
+    font-size: 29px;
+  }
+
+  .dienst-fotos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Verwijzingen naar de dienstpagina's onder de twee keuzekaarten. */
+.dienst-links {
+  max-width: 780px;
+  margin: 0 auto 26px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--grijs);
+}
+
+.dienst-links a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(207, 82, 21, 0.35);
+}
+
+.dienst-links a:hover {
+  border-bottom-color: var(--cta);
+}

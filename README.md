@@ -69,6 +69,17 @@ python tools/stempel.py
 Dat zet `?v=<hash>` achter elke verwijzing naar een eigen stijl- of scriptbestand.
 `python tools/stempel.py --controle` schrijft niets en meldt alleen of alles bij is.
 
+## Dienstpagina's
+
+Naast de homepage staan er vijf pagina's per dienst, elk met een eigen titel, H1,
+projectfoto's, gemeentelijst en zes veelgestelde vragen met FAQPage-schema:
+
+- `schadeherstel.html` · `dakwerken.html` · `gevelwerken.html`
+- `technieken.html` · `renovatie.html`
+
+Ze worden gegenereerd uit één sjabloon zodat kop en voet gelijk blijven met de
+homepage. De inhoud staat in `docs/zoektermen-1000.md` en `docs/zoekwoorden.md`.
+
 ## Talen
 
 De site bestaat in drie talen:
