@@ -140,6 +140,26 @@
     [50.99, 2.60]   /* Veurne */
   ];
 
+  /* De kaarttegels komen van OpenStreetMap. Dat is een derde partij, en zodra een tegel
+     geladen wordt vertrekt het IP-adres van de bezoeker daarheen. Daarom laden we de kaart
+     pas na een klik: wie hem niet opent, deelt niets (2026-09-07, uit de audit). */
+  if (!vak.hasAttribute('data-geladen')) {
+    var knop = document.createElement('button');
+    knop.type = 'button';
+    knop.className = 'kaart-starten';
+    knop.innerHTML = '<strong>Kaart tonen</strong>' +
+      '<span>De kaart komt van OpenStreetMap. Bij het openen gaat uw IP-adres naar die dienst.</span>';
+    knop.addEventListener('click', function () {
+      vak.setAttribute('data-geladen', '1');
+      knop.remove();
+      bouwKaart();
+    });
+    vak.appendChild(knop);
+    return;
+  }
+  bouwKaart();
+
+  function bouwKaart() {
   var kaart = L.map(vak, { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -161,6 +181,7 @@
   /* Scrollen over de kaart mag de pagina niet kapen; met ctrl ingedrukt kan je wel zoomen. */
   kaart.on('focus', function () { kaart.scrollWheelZoom.enable(); });
   kaart.on('blur', function () { kaart.scrollWheelZoom.disable(); });
+  }
 })();
 
 /* ===== Telefoonnummers: knop op gsm, tekst op de computer (2026-09-06, vraag Bartel) ======
@@ -314,7 +335,9 @@
   function toon(index) {
     if (!reeks.length) return;
     nr = (index + reeks.length) % reeks.length;
-    beeld.src = reeks[nr].src;
+    /* data-groot bevat de versie van 1600 pixels; de foto in de carrousel is bewust
+       klein gehouden voor de laadtijd. */
+    beeld.src = reeks[nr].getAttribute('data-groot') || reeks[nr].src;
     beeld.alt = reeks[nr].alt || '';
     bijschrift.textContent = kantNaam + ' · foto ' + (nr + 1) + ' van ' + reeks.length;
     var meerdere = reeks.length > 1;
