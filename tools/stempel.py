@@ -30,6 +30,7 @@ WORTEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGINAS = ("index.html", "privacyverklaring.html", "algemene-voorwaarden.html",
            "gebruiksvoorwaarden.html", "fr/index.html", "en/index.html",
            "fr/confidentialite.html", "en/privacy.html",
+           "spoedherstelling.html",
            "schadeherstel.html", "dakwerken.html", "gevelwerken.html",
            "technieken.html", "renovatie.html")
 
